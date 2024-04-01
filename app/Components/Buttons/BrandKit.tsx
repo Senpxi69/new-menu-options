@@ -8,6 +8,7 @@ interface BrandKitProps {
 
 function BrandKit({ height, showFlexCol }: BrandKitProps) {
     const flexColClass = showFlexCol ? '' : 'flex flex-col';
+    const buttonHeight = height || '104px'
     return (
         <div>
             <Button
@@ -15,7 +16,7 @@ function BrandKit({ height, showFlexCol }: BrandKitProps) {
                 className="bg-gray-100 border border-gray-300 hover:border-blue-500 flex flex-col justify-center items-center m-1"
                 style={{
                     width: '168px',
-                    height: height || '104px',
+                    height: buttonHeight,
                     fontSize: '1.2rem',
                     color: 'black',
                     borderRadius: '10px',

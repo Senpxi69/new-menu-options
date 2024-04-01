@@ -10,10 +10,11 @@ import Elements from './SVG/Elements'
 import Record from './SVG/Record'
 import Faq from './SVG/Faq'
 import SideSection from './SideSection'
+import ControlBar from './ControlBar'
 
 function SideBar() {
 
-    const [activeButton, setActiveButton] = useState("");
+    const [activeButton, setActiveButton] = useState("Search");
 
     const handleClick = (buttonName: string) => {
         setActiveButton(buttonName);
@@ -67,6 +68,7 @@ function SideBar() {
                 </div>
             </div>
             {activeButton && <SideSection sectionName={activeButton} />}
+
         </div>
     )
 }

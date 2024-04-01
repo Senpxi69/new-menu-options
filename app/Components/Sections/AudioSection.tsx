@@ -18,7 +18,7 @@ function AudioSection() {
             <div className='flex justify-evenly items-center'>
                 <VoiceOver />
                 <div className='flex flex-col justify-evenly items-center'>
-                    <BrandKit height={"48"} showFlexCol={true} />
+                    <BrandKit height={"48px"} showFlexCol={true} />
                     <DropBoxButton />
                 </div>
             </div>
