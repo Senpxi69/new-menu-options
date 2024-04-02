@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import { CirclePicker, ColorResult } from 'react-color';
 
 function MiddleSection() {
     const [canvasSize, setCanvasSize] = useState({ width: 640, height: 360 });
     const [selectedRatio, setSelectedRatio] = useState('landscape');
-    const [backgroundColor, setBackgroundColor] = useState('#ffffff'); // Default color is white
+    const [selectedColor, setSelectedColor] = useState('#ffffff');
+    const [showRatioOptions, setShowRatioOptions] = useState(false);
+    const [showColorOptions, setShowColorOptions] = useState(false);
+    const referenceElement = useRef<HTMLButtonElement>(null);
+    const popperElement = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         function updateCanvasSize() {
@@ -51,45 +56,57 @@ function MiddleSection() {
         return () => window.removeEventListener('resize', updateCanvasSize);
     }, [selectedRatio]);
 
-    const handleRatioChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedRatio(e.target.value);
+    const handleRatioChange = (ratio: string) => {
+        setSelectedRatio(ratio);
+        setShowRatioOptions(false);
     };
 
-    const handleColorChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setBackgroundColor(e.target.value);
+    const handleColorChange = (color: any) => {
+        setSelectedColor(color.hex);
+        setShowColorOptions(false);
     };
-    
+
     return (
-        <div className="flex flex-col justify-center items-center h-full w-full" >
+        <div className="flex flex-col justify-center items-center h-full w-full relative">
             <div className="p-8 rounded-lg max-w-screen-md w-full overflow-hidden" style={{ width: canvasSize.width, height: canvasSize.height }}>
-                <canvas style={{ backgroundColor }} className="mx-auto bg-gray-200" id="myCanvas" width={canvasSize.width} height={canvasSize.height}></canvas>
+                <canvas style={{ backgroundColor: selectedColor, zIndex: 0 }} className="mx-auto bg-gray-200" id="myCanvas" width={canvasSize.width} height={canvasSize.height}></canvas>
             </div>
-            <div className="mt-4">
-                <label htmlFor="ratioSelect" className="mr-2 text-gray-600">Select Ratio:</label>
-                <select
-                    id="ratioSelect"
-                    value={selectedRatio}
-                    onChange={handleRatioChange}
-                    className="border border-gray-300 rounded-md bg-white shadow-sm text-gray-700 py-2 px-4 focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200">
-                    <option value="landscape">Landscape (16:9)</option>
-                    <option value="portrait">Portrait (9:16)</option>
-                    <option value="square">Square (1:1)</option>
-                </select>
-            </div>
-            <div className="mt-4">
-                <label htmlFor="colorSelect" className="mr-2 text-gray-600">Select Background Color:</label>
-                <select
-                    id="colorSelect"
-                    value={backgroundColor}
-                    onChange={handleColorChange}
-                    className="border border-gray-300 rounded-md bg-white shadow-sm text-gray-700 py-2 px-4 focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200">
-                    <option value="#ffffff">White</option>
-                    <option value="#000000">Black</option>
-                    <option value="#ff0000">Red</option>
-                    <option value="#00ff00">Green</option>
-                    <option value="#0000ff">Blue</option>
-                    {/* Add more colors as needed */}
-                </select>
+            <div className="flex mt-4" style={{ zIndex: 1 }}>
+                <div className="relative mr-4">
+                    <button
+                        className="border border-gray-300 rounded-md bg-white shadow-sm text-gray-700 py-2 px-4 focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200"
+                        onClick={() => setShowRatioOptions(!showRatioOptions)}
+                    >
+                        Ratio: {selectedRatio}
+                    </button>
+                    {showRatioOptions && (
+                        <div className="absolute -top-48 left-0 mt-2 bg-white border border-gray-300 rounded-md shadow-md max-w-full z-20">
+                            <ul>
+                                <li onClick={() => handleRatioChange('landscape')} className="cursor-pointer py-2 px-4 hover:bg-gray-100">Landscape (16:9)</li>
+                                <li onClick={() => handleRatioChange('portrait')} className="cursor-pointer py-2 px-4 hover:bg-gray-100">Portrait (9:16)</li>
+                                <li onClick={() => handleRatioChange('square')} className="cursor-pointer py-2 px-4 hover:bg-gray-100">Square (1:1)</li>
+                            </ul>
+                        </div>
+                    )}
+                </div>
+                <div className="h-full border-l border-gray-300"></div> {/* Vertical line */}
+                <div className="relative ml-4">
+                    <button
+                        ref={referenceElement}
+                        className="border border-gray-300 rounded-md bg-white shadow-sm text-gray-700 py-2 px-4 focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 relative"
+                        onClick={() => setShowColorOptions(!showColorOptions)}
+                    >
+                        <div className="flex items-center">
+                            <span className="mr-2">Background</span>
+                            <div className="w-6 h-6 rounded-full border border-gray-400" style={{ backgroundColor: selectedColor }}></div>
+                        </div>
+                        {showColorOptions && (
+                            <div ref={popperElement} className="absolute -top-48 left-0 mt-2 bg-white border border-gray-300 rounded-md shadow-md p-4" style={{ zIndex: 2 }}>
+                                <CirclePicker color={selectedColor} onChange={handleColorChange} />
+                            </div>
+                        )}
+                    </button>
+                </div>
             </div>
         </div>
     );

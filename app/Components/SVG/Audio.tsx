@@ -12,7 +12,7 @@ function Audio({ buttonName }: AudioProps) {
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle className="background" opacity="0" cx="20" cy="20" r="20" fill="#9094A5"></circle>
                 <g filter="url(#filter0_i_5002_422651)">
-                    <rect className="main" x="8" y="8" width="24" height="24" rx="7" fill={buttonName === "Audio" ? "blue-300" : "#C5C7D0"}></rect>
+                    <rect className="main" x="8" y="8" width="24" height="24" rx="7" fill={buttonName === "Audio" ? "#38bdf8" : "#C5C7D0"}></rect>
                     <rect x="8" y="8" width="24" height="24" rx="7" fill="url(#paint0_linear_5002_422651)" fill-opacity="0.2">
                     </rect>
                 </g>

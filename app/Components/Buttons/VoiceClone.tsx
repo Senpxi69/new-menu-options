@@ -8,14 +8,14 @@ function VoiceClone() {
 
       <Button
         size="lg"
-        className="m-1 bg-gray-100 border border-gray-300 hover:border-blue-500 flex flex-col justify-center items-center"
+        className="m-1 bg-transparent border border-gray-300 hover:border-blue-500 flex flex-col justify-center items-center"
         style={{
           width: '168px',
           height: '104px',
           fontSize: '1.2rem',
           color: 'black',
           borderRadius: '10px',
-          boxShadow: 'none',
+          boxShadow: 'rgba(0, 0, 0, 0.06) 0px,1px,1px',
           padding: '16px',
         }}
       >

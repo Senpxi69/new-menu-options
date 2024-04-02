@@ -9,7 +9,7 @@ function Drop() {
     return (
         <div>
             <Dropzone
-                className={`border-2 border-gray-300 hover:border-blue-500 m-1 ${isHovered ? 'bg-gray-400' : ''}`}
+                className={`border-2 border-dashed border-gray-300 hover:border-sky-400 m-1 ${isHovered ? 'bg-gray-400' : ''}`}
                 onDrop={(files: File[]) => {
                     console.log('Dropped files:', files);
                 }}
@@ -21,7 +21,7 @@ function Drop() {
                     borderRadius: '8px',
                     textAlign: 'center',
                     cursor: 'pointer',
-                    backgroundColor: isHovered ? '#cbd5e0' : 'transparent',
+                    backgroundColor: isHovered ? '#f0f9ff' : 'transparent',
                     height: '200px',
                     display: 'flex', // Display elements in flex layout
                     flexDirection: 'column', // Arrange elements in columns
