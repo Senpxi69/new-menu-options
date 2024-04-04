@@ -20,7 +20,7 @@ function ControlBar() {
 
 
     return (
-        <div className="absolute bottom-0 left-16 ml-2 right-0 flex justify-between items-center px-4 py-2 bg-gray-200 z-50">
+        <div className="absolute bottom-0 left-16 ml-2 right-0 flex justify-between items-center px-4 py-2 bg-white border border-gray-100">
             <div className="control-bar__left flex">
                 <button className="voiceover-btn mr-2 flex justify-evenly items-center hover:bg-gray-300">
                     <div className='flex justify-center items-center'>
