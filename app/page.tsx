@@ -1,19 +1,30 @@
 "use client"
-import React from 'react'
-import SideBar from './Components/SideBar'
-import { MantineProvider } from '@mantine/core'
-import MiddleSection from './Components/MiddleSection'
-import ControlBar from './Components/ControlBar'
+import React from 'react';
+import styled from 'styled-components';
+import SideBar from './Components/SideBar';
+import { MantineProvider } from '@mantine/core';
+import MiddleSection from './Components/MiddleSection';
+import ControlBar from './Components/ControlBar';
 
-function page() {
+const PageContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+`;
+
+function Page() {
   return (
-    <div className='flex'>
+    <PageContainer>
       <MantineProvider>
         <SideBar />
         <MiddleSection />
+        <div>
+          <ControlBar />
+        </div>
       </MantineProvider>
-    </div>
-  )
+    </PageContainer>
+  );
 }
 
-export default page
+export default Page;

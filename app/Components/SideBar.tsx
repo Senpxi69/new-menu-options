@@ -10,6 +10,7 @@ import Record from './SVG/Record'
 import Faq from './SVG/Faq'
 import SideSection from './SideSection'
 import styled from 'styled-components'
+import ControlBar from './ControlBar'
 
 function SideBar() {
     const [activeButton, setActiveButton] = useState("Search");
@@ -68,6 +69,7 @@ function SideBar() {
                 </div>
                 {activeButton && <SideSection sectionName={activeButton} />}
             </div>
+
         </Container>
     )
 }
@@ -76,6 +78,7 @@ const Container = styled.div`
     @media (max-width: 767px) {
         .sidebar-container {
             position: fixed;
+            width:100%;
             bottom: 0;
             left: 0;
             width: 100%;
@@ -88,7 +91,7 @@ const Container = styled.div`
         }
 
         .sidebar-button {
-            margin: 5px; /* Adjust spacing between buttons */
+            margin: 20px; /* Adjust spacing between buttons */
         }
     }
 `
