@@ -24,7 +24,15 @@ const slideOut = keyframes`
     }
 `;
 
-const SideSectionContainer = styled.div`
+interface SideSectionProps {
+    sectionName?: string;
+}
+
+interface SideSectionContainerProps {
+    isVisible: boolean;
+}
+
+const SideSectionContainer = styled.div<SideSectionContainerProps>`
     @media (max-width: 768px){
         position: fixed;
         bottom: 0;
@@ -50,7 +58,7 @@ const ButtonContainer = styled.div`
     align-items: center;
 `;
 
-function SideSection({ sectionName }: { sectionName?: string }) {
+function SideSection({ sectionName }: SideSectionProps) {
     const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
