@@ -13,7 +13,7 @@ import styled from 'styled-components'
 import ControlBar from './ControlBar'
 
 function SideBar() {
-    const [activeButton, setActiveButton] = useState("Search");
+    const [activeButton, setActiveButton] = useState("");
 
     const handleClick = (buttonName: string) => {
         setActiveButton(buttonName);
@@ -88,6 +88,7 @@ const Container = styled.div`
             align-items: center;
             overflow-x: auto;
             padding: 0 10px; /* Adjust as needed */
+            z-index:1000;
         }
 
         .sidebar-button {

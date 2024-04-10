@@ -17,7 +17,9 @@ function Page() {
   return (
     <PageContainer>
       <MantineProvider>
-        <SideBar />
+        <div>
+          <SideBar />
+        </div>
         <MiddleSection />
         <div>
           <ControlBar />

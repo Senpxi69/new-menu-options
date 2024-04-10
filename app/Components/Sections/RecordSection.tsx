@@ -1,39 +1,44 @@
-import React from 'react'
-import CameraButton from '../Buttons/RecordSectionButtons/CameraButton'
-import ScreenCameraButton from '../Buttons/RecordSectionButtons/ScreenCameraButton'
-import SlideCameraButton from '../Buttons/RecordSectionButtons/SlideCameraButton'
-import AudioButton from '../Buttons/RecordSectionButtons/AudioButton'
-import SlidesButton from '../Buttons/RecordSectionButtons/SlidesButton'
-import ScreenButton from '../Buttons/RecordSectionButtons/ScreenButton'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
+import CameraButton from '../Buttons/RecordSectionButtons/CameraButton';
+import ScreenCameraButton from '../Buttons/RecordSectionButtons/ScreenCameraButton';
+import SlideCameraButton from '../Buttons/RecordSectionButtons/SlideCameraButton';
+import AudioButton from '../Buttons/RecordSectionButtons/AudioButton';
+import SlidesButton from '../Buttons/RecordSectionButtons/SlidesButton';
+import ScreenButton from '../Buttons/RecordSectionButtons/ScreenButton';
+
+const RecordSectionContainer = styled.div`
+    padding: 20px;
+    width: 100%;
+    max-height: 80%;
+    overflow-y: auto;
+`;
+
+const SectionTitle = styled.p`
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+`;
+
+const ButtonGrid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+`;
 
 function RecordSection() {
     return (
-        <Container>
-            <div className='flex flex-col items-center h-screen'>
-                <p className=' mb-4'>Record Section</p>
-                <div className='grid grid-cols-2 gap-3'>
-                    <CameraButton />
-                    <AudioButton />
-                    <ScreenButton />
-                    <ScreenCameraButton />
-                    <SlideCameraButton />
-                    <SlidesButton />
-                </div>
-            </div>
-        </Container>
-    )
+        <RecordSectionContainer>
+            <SectionTitle>Record Section</SectionTitle>
+            <ButtonGrid>
+                <CameraButton />
+                <AudioButton />
+                <ScreenButton />
+                <ScreenCameraButton />
+                <SlideCameraButton />
+                <SlidesButton />
+            </ButtonGrid>
+        </RecordSectionContainer>
+    );
 }
 
-const Container = styled.div`
-    height: 100vh; /* Set height to 100% of viewport height */
-    
-    padding: 20px;
-
-    @media only screen and (max-width: 480px) {
-        margin-top: 40vh; /* Add margin from top */
-        padding: 10px;
-    }
-`;
-
-export default RecordSection
+export default RecordSection;

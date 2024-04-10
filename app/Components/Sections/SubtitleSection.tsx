@@ -1,50 +1,57 @@
-import React from 'react'
-import AutoSubtitle from '../Buttons/SubtitlesSectionButton/AutoSubtitle'
-import Transcript from '../Buttons/SubtitlesSectionButton/Transcript'
-import ManualTranscribeButton from '../Buttons/SubtitlesSectionButton/ManualTranscribeButton'
-import UploadSubtitlesButton from '../Buttons/SubtitlesSectionButton/UploadSubtitlesButton'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
+import AutoSubtitle from '../Buttons/SubtitlesSectionButton/AutoSubtitle';
+import Transcript from '../Buttons/SubtitlesSectionButton/Transcript';
+import ManualTranscribeButton from '../Buttons/SubtitlesSectionButton/ManualTranscribeButton';
+import UploadSubtitlesButton from '../Buttons/SubtitlesSectionButton/UploadSubtitlesButton';
+
+const SubtitleSectionContainer = styled.div`
+    padding: 20px;
+    width: 100%;
+    max-height: 80%;
+    overflow-y: auto;
+`;
+
+const SectionTitle = styled.p`
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+`;
+
+const SubtitleOptionsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+`;
+
+const OptionTitle = styled.p`
+    text-align: center;
+    margin-bottom: 10px;
+`;
+
+const SubtitleButtonsContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+`;
 
 function SubtitleSection() {
     return (
-        <Container>
-            <div className='h-screen'>
-                <p className='text-center'>Subtitles</p>
-                <div className='flex flex-col'>
-
-                    <div className='flex flex-col'>
-                        <p className='text-center'>
-                            How do you want to add your Subtitles
-                        </p>
-                        <div className='m-2 flex'>
-                            <AutoSubtitle />
-                            <Transcript />
-                        </div>
-                    </div>
-
-                    <div className='flex flex-col'>
-                        <ManualTranscribeButton />
-                        <UploadSubtitlesButton />
-                    </div>
-
-
-
-                </div>
+        <SubtitleSectionContainer>
+            <SectionTitle>Subtitles</SectionTitle>
+            <SubtitleOptionsContainer>
+                <OptionTitle>How do you want to add your Subtitles?</OptionTitle>
+                <SubtitleButtonsContainer>
+                    <AutoSubtitle />
+                    <Transcript />
+                </SubtitleButtonsContainer>
+            </SubtitleOptionsContainer>
+            <div>
+                <ManualTranscribeButton />
+                <UploadSubtitlesButton />
             </div>
-        </Container>
-
-    )
+        </SubtitleSectionContainer>
+    );
 }
 
-const Container = styled.div`
-    height: 100vh; /* Set height to 100% of viewport height */
-    
-    padding: 20px;
-
-    @media only screen and (max-width: 480px) {
-        margin-top: 40vh; /* Add margin from top */
-        padding: 10px;
-    }
-`;
-
-export default SubtitleSection
+export default SubtitleSection;

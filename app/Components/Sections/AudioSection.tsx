@@ -1,43 +1,48 @@
 import React from 'react';
+import styled from 'styled-components';
 import Drop from '../Buttons/Drop';
 import TextToSpeech from '../Buttons/TextToSpeech';
 import VoiceClone from '../Buttons/VoiceClone';
 import VoiceOver from '../Buttons/VoiceOver';
 import BrandKit from '../Buttons/BrandKit';
 import DropBoxButton from '../Buttons/DropBoxButton';
-import styled from 'styled-components';
+
+const AudioSectionContainer = styled.div`
+    padding: 20px;
+    width: 100%;
+    max-height: 80%;
+    overflow-y: auto;
+`;
+
+const SectionTitle = styled.p`
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+`;
+
+const ButtonContainer = styled.div`
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+`;
 
 function AudioSection() {
     return (
-        <Container>
-            <div className='flex flex-col justify-evenly items-center'>
-                <p className='text-lg mb-3'>Add Media</p>
-                <Drop />
-                <div className='flex justify-evenly items-center'>
-                    <VoiceClone />
-                    <TextToSpeech />
+        <AudioSectionContainer>
+            <SectionTitle>Add Media</SectionTitle>
+            <Drop />
+            <ButtonContainer>
+                <VoiceClone />
+                <TextToSpeech />
+            </ButtonContainer>
+            <ButtonContainer>
+                <VoiceOver />
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center' }}>
+                    <BrandKit height={"48px"} showFlexCol={true} />
+                    <DropBoxButton />
                 </div>
-                <div className='flex justify-evenly items-center'>
-                    <VoiceOver />
-                    <div className='flex flex-col justify-evenly items-center'>
-                        <BrandKit height={"48px"} showFlexCol={true} />
-                        <DropBoxButton />
-                    </div>
-                </div>
-            </div>
-        </Container>
+            </ButtonContainer>
+        </AudioSectionContainer>
     );
 }
-
-const Container = styled.div`
-    height: 100vh; /* Set height to 100% of viewport height */
-    
-    padding: 20px;
-
-    @media only screen and (max-width: 480px) {
-        margin-top: 40vh; /* Add margin from top */
-        padding: 10px;
-    }
-`;
 
 export default AudioSection;
