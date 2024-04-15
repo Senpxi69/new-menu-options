@@ -69,12 +69,12 @@ function MiddleSection() {
     };
 
     return (
-        <Container className="flex flex-col justify-center items-center h-full w-screen relative">
+        <Container className="flex flex-col justify-center h-full w-screen relative">
             <div>
                 <div className="rounded-lg max-w-screen-md w-full overflow-hidden">
                     <canvas
                         style={{ backgroundColor: selectedColor, width: canvasSize.width, height: canvasSize.height }}
-                        className="mx-auto"
+                        className="mx-auto sm:mb-5"
                         id="myCanvas"
                     ></canvas>
                 </div>
@@ -122,12 +122,15 @@ function MiddleSection() {
 
 const Container = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   @media (max-width: 767px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    flex-direction: column;
+    height:80%;
+}
 `;
+
 
 export default MiddleSection;

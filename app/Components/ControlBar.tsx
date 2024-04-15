@@ -56,59 +56,56 @@ const InputRange = styled.input`
 `;
 
 function ControlBar() {
-    const [isClicked, setIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
-    const handleClick = () => {
-        setIsClicked(!isClicked);
-    }
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  }
 
-    return (
-        <ControlBarWrapper>
-            {/* Group 1: Voiceover and Cut */}
-            <ButtonGroup>
-                <ControlButton onClick={() => console.log("Voiceover clicked")}>
-                    <Image src={Mic} alt='mic' width={24} height={24} />
-                    <span className="ml-2">Voiceover</span>
-                </ControlButton>
+  return (
+    <ControlBarWrapper>
+      {/* Group 1: Voiceover and Cut */}
+      <ButtonGroup>
+        <ControlButton onClick={() => console.log("Voiceover clicked")}>
+          <Image src={Mic} alt='mic' width={24} height={24} />
+          <span className="ml-2">Voiceover</span>
+        </ControlButton>
 
-                <ControlButton onClick={() => console.log("Voiceover clicked")}>
-                    <Image src={Cut} alt='mic' width={24} height={24} />
-                    <span className="ml-2">Cut</span>
-                </ControlButton>
-            </ButtonGroup>
+        <ControlButton onClick={() => console.log("Voiceover clicked")}>
+          <Image src={Cut} alt='mic' width={24} height={24} />
+          <span className="ml-2">Cut</span>
+        </ControlButton>
+      </ButtonGroup>
 
-            {/* Group 2: Play, Pause, Forward, Backward */}
-            <ButtonGroup>
-                <ControlButton onClick={() => console.log("Rewind clicked")}>
-                    <Image src={Backward} alt='backward' width={24} height={24} />
-                    <span className="ml-2">Rewind</span>
-                </ControlButton>
+      {/* Group 2: Play, Pause, Forward, Backward */}
+      <ButtonGroup>
+        <ControlButton onClick={() => console.log("Rewind clicked")}>
+          <Image src={Backward} alt='backward' width={24} height={24} />
+        </ControlButton>
 
-                <ControlButton onClick={handleClick}>
-                    <Image src={isClicked ? Pause : Play} alt='play' width={24} height={24} />
-                    <span className="ml-2">Play</span>
-                </ControlButton>
+        <ControlButton onClick={handleClick}>
+          <Image src={isClicked ? Pause : Play} alt='play' width={24} height={24} />
+        </ControlButton>
 
-                <ControlButton onClick={() => console.log("Fast forward clicked")}>
-                    <Image src={Forward} alt='pause' width={24} height={24} />
-                    <span className="ml-2">Forward</span>
-                </ControlButton>
-            </ButtonGroup>
+        <ControlButton onClick={() => console.log("Fast forward clicked")}>
+          <Image src={Forward} alt='pause' width={24} height={24} />
+        </ControlButton>
+      </ButtonGroup>
 
-            {/* Group 3: Plus, Minus, Input */}
+      {/* Group 3: Plus, Minus, Input */}
 
 
-            <ControlButton onClick={() => console.log("Decrease clicked")}>
-                <Image src={Minus} alt='minus' width={24} height={24} />
-                <span className="ml-2">Decrease</span>
-            </ControlButton>
-            <InputRange type='range' />
-            <ControlButton onClick={() => console.log("Increase clicked")}>
-                <Image src={Plus} alt='plus' width={24} height={24} />
-                <span className="ml-2">Increase</span>
-            </ControlButton>
-        </ControlBarWrapper>
-    );
+      <ButtonGroup>
+        <ControlButton onClick={() => console.log("Decrease clicked")}>
+          <Image src={Minus} alt='minus' width={24} height={24} />
+        </ControlButton>
+        <InputRange type='range' />
+        <ControlButton onClick={() => console.log("Increase clicked")}>
+          <Image src={Plus} alt='plus' width={24} height={24} />
+        </ControlButton>
+      </ButtonGroup>
+    </ControlBarWrapper>
+  );
 }
 
 export default ControlBar;
